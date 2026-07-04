@@ -1,7 +1,6 @@
-# BackroomsInfinite — Godot
+# godot-demo
 
-A blank **Godot 4.x** starter project. The existing three.js web version lives
-in the repo root; this folder is an independent Godot project.
+A blank **Godot 4.x** starter project.
 
 ## Requirements
 
@@ -10,14 +9,14 @@ in the repo root; this folder is an independent Godot project.
 ## Open the project
 
 1. Launch Godot 4.x.
-2. Click **Import**, select `godot/project.godot`, and open it.
+2. Click **Import**, select `project.godot` at the repo root, and open it.
 3. Press **F5** (or the ▶ button) to run. You should see a centered label
    confirming the starter is running. **Esc** quits.
 
 ## Layout
 
 ```
-godot/
+.
 ├── project.godot        # Project configuration (main scene, input map, display)
 ├── icon.svg             # Project/window icon
 ├── scenes/
