@@ -1,22 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmainscene0001"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="Script" path="res://scripts/chunk_world.gd" id="3_chunks"]
+[ext_resource type="Script" path="res://scripts/ambient_hum.gd" id="4_hum"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node3D"]
 script = ExtResource("1_main")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ChunkWorld" type="Node3D" parent="."]
+script = ExtResource("3_chunks")
 
-[node name="Label" type="Label" parent="CanvasLayer/CenterContainer"]
-layout_mode = 2
-text = "BackroomsInfinite — Godot 4.x
-Blank starter is running."
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Player" parent="." instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="AmbientHum" type="AudioStreamPlayer" parent="."]
+script = ExtResource("4_hum")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Hint" type="Label" parent="HUD"]
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 980.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.90, 0.84, 0.62, 0.78)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 15
+text = "WASD move   ·   Arrows look   ·   F flashlight   ·   C crouch   ·   Esc quit"
